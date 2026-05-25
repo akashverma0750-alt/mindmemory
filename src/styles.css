@@ -1,0 +1,161 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-blush: var(--blush);
+  --color-lavender: var(--lavender);
+  --color-peach: var(--peach);
+  --color-mint: var(--mint);
+  --color-butter: var(--butter);
+  --color-sky: var(--sky);
+
+  --animate-blob: blob 22s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-gradient: gradient-shift 12s ease infinite;
+  --animate-fade-up: fade-up 0.7s ease-out both;
+}
+
+:root {
+  --radius: 1.25rem;
+
+  --background: oklch(0.985 0.012 80);
+  --foreground: oklch(0.22 0.04 320);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.22 0.04 320);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.04 320);
+
+  --primary: oklch(0.55 0.18 340);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.04 330);
+  --secondary-foreground: oklch(0.3 0.05 320);
+  --muted: oklch(0.96 0.015 80);
+  --muted-foreground: oklch(0.5 0.03 320);
+  --accent: oklch(0.92 0.06 300);
+  --accent-foreground: oklch(0.28 0.06 320);
+  --destructive: oklch(0.62 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.92 0.02 320 / 0.6);
+  --input: oklch(0.94 0.02 320);
+  --ring: oklch(0.7 0.15 340);
+
+  --blush: oklch(0.88 0.08 10);
+  --lavender: oklch(0.82 0.09 300);
+  --peach: oklch(0.9 0.08 60);
+  --mint: oklch(0.9 0.07 165);
+  --butter: oklch(0.94 0.09 95);
+  --sky: oklch(0.88 0.07 230);
+}
+
+.dark {
+  --background: oklch(0.18 0.03 320);
+  --foreground: oklch(0.96 0.01 80);
+  --card: oklch(0.22 0.04 320);
+  --card-foreground: oklch(0.96 0.01 80);
+  --popover: oklch(0.22 0.04 320);
+  --popover-foreground: oklch(0.96 0.01 80);
+  --primary: oklch(0.75 0.15 340);
+  --primary-foreground: oklch(0.18 0.03 320);
+  --secondary: oklch(0.28 0.05 320);
+  --secondary-foreground: oklch(0.96 0.01 80);
+  --muted: oklch(0.28 0.04 320);
+  --muted-foreground: oklch(0.72 0.03 320);
+  --accent: oklch(0.32 0.06 300);
+  --accent-foreground: oklch(0.96 0.01 80);
+  --border: oklch(1 0 0 / 0.1);
+  --input: oklch(1 0 0 / 0.15);
+  --ring: oklch(0.7 0.15 340);
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(40px,-30px) scale(1.1); }
+  66% { transform: translate(-30px,30px) scale(0.95); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { font-family: var(--font-sans); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    background-image:
+      radial-gradient(ellipse 80% 50% at 20% 0%, color-mix(in oklab, var(--blush) 50%, transparent), transparent),
+      radial-gradient(ellipse 70% 50% at 80% 20%, color-mix(in oklab, var(--lavender) 45%, transparent), transparent),
+      radial-gradient(ellipse 60% 50% at 50% 100%, color-mix(in oklab, var(--peach) 40%, transparent), transparent);
+    background-attachment: fixed;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@utility glass {
+  background: color-mix(in oklab, white 65%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid color-mix(in oklab, white 70%, transparent);
+  box-shadow: 0 10px 40px -10px color-mix(in oklab, var(--primary) 15%, transparent),
+              inset 0 1px 0 0 rgba(255,255,255,0.6);
+}
+
+@utility glass-strong {
+  background: color-mix(in oklab, white 80%, transparent);
+  backdrop-filter: blur(30px) saturate(160%);
+  -webkit-backdrop-filter: blur(30px) saturate(160%);
+  border: 1px solid color-mix(in oklab, white 80%, transparent);
+  box-shadow: 0 20px 60px -15px color-mix(in oklab, var(--primary) 20%, transparent);
+}
+
+@utility text-gradient {
+  background: linear-gradient(120deg, oklch(0.55 0.2 340), oklch(0.6 0.18 280), oklch(0.65 0.17 30));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 8s ease infinite;
+}
